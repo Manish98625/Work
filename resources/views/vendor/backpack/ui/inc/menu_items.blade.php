@@ -11,3 +11,6 @@
 
 <x-backpack::menu-item title="Bills" icon="la la-question" :link="backpack_url('bill')" />
 <x-backpack::menu-item title="Purifiers" icon="la la-question" :link="backpack_url('purifier')" />
+
+<x-backpack::menu-item title="Permissions" icon="la la-question" :link="backpack_url('permission')" />
+<x-backpack::menu-item title="Roles" icon="la la-question" :link="backpack_url('role')" />

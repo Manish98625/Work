@@ -2,16 +2,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 @if (backpack_theme_config('meta_robots_content'))
-    <meta name="robots" content="{{ backpack_theme_config('meta_robots_content', 'noindex, nofollow') }}"> @endif
+    <meta name="robots" content="{{ backpack_theme_config('meta_robots_content', 'noindex, nofollow') }}">
+@endif
 
-<meta name="csrf-token" content="{{ csrf_token() }}"/> {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
-<title>{{ isset($title) ? $title.' :: '.backpack_theme_config('project_name') : backpack_theme_config('project_name') }}</title>
+<meta name="csrf-token" content="{{ csrf_token() }}" /> {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
+<title>
+    {{ isset($title) ? $title . ' :: ' . backpack_theme_config('Wattra Technology') : backpack_theme_config('Wattra Technology') }}
+</title>
 
 @yield('before_styles')
 @stack('before_styles')
 
+@if (config('backpack.base.styles') && count(config('backpack.base.styles')))
+    @foreach (config('backpack.base.styles') as $path)
+        <link rel="stylesheet" type="text/css"
+            href="{{ asset($path) . '?v=' . config('backpack.base.cachebusting_string') }}">
+    @endforeach
+@endif
 @include(backpack_view('inc.theme_styles'))
-@include(backpack_view('inc.styles'))
+@include(backpack_view('inc.styles'))  
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 
 @yield('after_styles')
 @stack('after_styles')

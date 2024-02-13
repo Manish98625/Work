@@ -28,9 +28,12 @@ Route::group([
 ], function () { // custom admin routes
 
     Route::crud('user', 'UserCrudController');
+    Route::crud('permission', 'PermissionCrudController');
+    Route::crud('role', 'RoleCrudController');
 }); // this should be the absolute last line of this file
 
 Route::group([
+
     'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => array_merge(
         (array) config('backpack.base.web_middleware', 'web'),
